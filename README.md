@@ -25,6 +25,7 @@ Check out the live demo of the project [here](https://decodersami.github.io/Anal
 - Accurate representation of **hours**, **minutes**, and **seconds**.
 - Clean and minimal UI created using modern **CSS styling**.
 - You can see the current day date.
+- You can see the temperature as well.
 - Will be add weather forecast features as well.
 
 ## 🛠️ Technologies Used
