@@ -34,12 +34,34 @@ function updateDate() {
     dateElement.textContent = formattedDate;
 }
 
+// Function to fetch and update the weather (temperature)
+async function updateWeather() {
+    const weatherElement = document.getElementById('weather');
+    const apiKey = 'b0ba3f62442858ad65428e79adfa6d71'; // Replace with your OpenWeatherMap API key
+    const city = 'Pune'; // Replace with your city name
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    // const url = 'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}'
+
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      const temp = data.main.temp;
+
+      // Display temperature in Celsius
+      weatherElement.textContent = `Temp: ${temp}°C`;
+    } catch (error) {
+    //   weatherElement.textContent = 'Error fetching weather';
+      console.error(error);
+    }
+}
 // Call updateClock every second
 setInterval(() => {
     updateClock();
     updateDate();
+    updateWeather();
     }, 1000);
 
 // Initial call to set time and date immediately
 updateClock();
 updateDate();
+updateWeather();
